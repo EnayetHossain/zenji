@@ -36,7 +36,7 @@ function HeroSection() {
 
   return (
     <header className="flex flex-col items-center">
-      <svg width="100%" height="auto" viewBox="20 140 1380 370" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style={{ display: 'block', maxWidth: '100%' }}>
+      <svg width="100%" height="31rem" viewBox="20 140 1380 370" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style={{ display: 'block', maxWidth: '100%' }}>
         <g id="svgGroup" stroke-linecap="round" fill-rule="nonzero" fill="#ede4dd" stroke="#ede4dd" stroke-width="0.5" vector-effect="non-scaling-stroke">
           <g id="line-0">
             <path ref={path0} id="char-0-0" d="M269 496L25 496L25 438.500L182.500 208L25.500 208L25.500 146L268.500 146L268.500 203.500L110 434L269 434L269 496Z" />

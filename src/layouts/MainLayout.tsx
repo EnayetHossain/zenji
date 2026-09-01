@@ -6,7 +6,7 @@ function MainLayout() {
     <div className="text-[1.6rem] bg-bg text-text">
       <Navbar />
       <main className="flex-1 w-full">
-        <div className="mx-auto w-full max-w-[250rem] px-4">
+        <div className="mx-auto w-full max-w-[250rem] px-6">
           <Outlet />
         </div>
       </main>

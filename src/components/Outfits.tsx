@@ -1,8 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import { AnimatedLink } from "./shared/AnimatedLink";
-import Card from "./shared/Card";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Card, CardContent, CardFooter } from "./ui/card";
+import type { Products } from "@/types/product";
+import { Link } from "react-router";
 
 function Outfits() {
   const outRef = useRef<HTMLDivElement>(null)
@@ -12,6 +14,20 @@ function Outfits() {
   const line3Ref = useRef<HTMLSpanElement>(null)
   const linkRef = useRef<HTMLDivElement>(null)
   const copyRef = useRef<HTMLDivElement>(null)
+
+  const [products, setProducts] = useState<Products[]>([]);
+
+  useEffect(() => {
+    ; (async () => {
+      try {
+        const res = await fetch("/data/products.json");
+        const data: Array<Products> = await res.json();
+        setProducts(data)
+      } catch (error) {
+        console.log("error: ", error)
+      }
+    })()
+  }, []);
 
   useGSAP(() => {
     const elements = [outRef, desRef, linkRef, copyRef]
@@ -43,7 +59,7 @@ function Outfits() {
   });
 
   return (
-    <section className="mt-8">
+    <section className="mt-10">
       <div className="flex flex-wrap md:flex-nowrap justify-between gap-y-8">
         <div className="w-1/2 md:w-auto text-xl font-semibold" ref={outRef}>OUTFIT</div>
 
@@ -63,7 +79,26 @@ function Outfits() {
         <div className="w-1/2 md:w-auto text-lg font-medium mt-8 md:mt-0 ml-auto md:ml-0 text-right" ref={copyRef}>&copy; 2026</div>
       </div>
 
-      <Card />
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(14rem,100%),1fr))] gap-8 my-12">
+        {
+          products.map((p) => (
+            <Link to="/">
+              <Card key={p.id} className="bg-text/20 rounded-none py-0 [--card-spacing:0px]">
+                <CardContent className="px-0 pb-0 mb-0 overflow-hidden">
+                  <img src={p.url} alt="image" className="w-full h-full object-cover" />
+                </CardContent>
+                <CardFooter className="bg-bg text-text flex justify-between items-start pt-6">
+                  <div>
+                    <div className="text-3xl">{p.title}</div>
+                    <div className="text-2xl">{p.category}</div>
+                  </div>
+                  <div className="text-3xl">${p.price}</div>
+                </CardFooter>
+              </Card>
+            </Link>
+          ))
+        }
+      </div>
     </section>
   )
 }
