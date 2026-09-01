@@ -1,9 +1,9 @@
+import { RouterProvider } from 'react-router'
 import './App.css'
+import router from './routes/router'
 
 function App() {
-  return (
-    <section className='text-[1.6rem]'>section</section>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
