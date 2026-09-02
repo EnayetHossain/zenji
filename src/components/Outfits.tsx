@@ -126,9 +126,9 @@ function Outfits() {
         <div className="w-1/2 md:w-auto text-lg font-medium mt-8 md:mt-0 ml-auto md:ml-0 text-right" ref={copyRef}>&copy; 2026</div>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(14rem,100%),1fr))] gap-8 my-12" ref={cardsRef}>
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(23rem,100%),1fr))] gap-8 my-12 overflow-hidden" ref={cardsRef}>
         {
-          products.map((p) => (
+          products.slice(0, 4).map((p) => (
             <Link to="/" key={p.id} className="card-anim">
               <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px]">
                 <CardContent className="px-0 pb-0 mb-0 overflow-hidden relative">
@@ -143,7 +143,10 @@ function Outfits() {
                 <CardFooter className="bg-bg text-text flex justify-between items-start pt-6 rounded-none">
                   <div>
                     <div className="text-3xl">{p.title}</div>
-                    <div className="text-2xl">{p.category}</div>
+                    <div className="text-sm mt-2 flex items-center gap-1 uppercase">
+                      <span className="inline-block w-2 h-2 rounded-full bg-current mr-2" />
+                      {p.category}
+                    </div>
                   </div>
                   <div className="text-3xl">${p.price}</div>
                 </CardFooter>
