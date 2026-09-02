@@ -4,4 +4,5 @@ export interface Products {
   category: string;
   price: string;
   url: string;
+  url2: string;
 }

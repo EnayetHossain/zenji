@@ -4,27 +4,31 @@
     "title": "Zenji Layer 1",
     "category": "Outerwear",
     "price": "129.00",
-    "url": "/first-img.png"
+    "url": "/first-img.png",
+    "url2": "/second-img.jpg"
   },
   {
     "id": "2",
     "title": "Zenji Layer 2",
     "category": "Mid Layer",
     "price": "89.00",
-    "url": "/first-img.png"
+    "url": "/first-img.png",
+    "url2": "/second-img.jpg"
   },
   {
     "id": "3",
     "title": "Zenji Layer 3",
     "category": "Base",
     "price": "45.00",
-    "url": "/first-img.png"
+    "url": "/first-img.png",
+    "url2": "/second-img.jpg"
   },
   {
     "id": "4",
     "title": "Zenji Layer 4",
     "category": "Accessories",
     "price": "34.84",
-    "url": "/first-img.png"
+    "url": "/first-img.png",
+    "url2": "/second-img.jpg"
   }
 ]

@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { AnimatedLink } from "./shared/AnimatedLink";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { useCardHover } from "../hooks/useCardHover";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import type { Products } from "@/types/product";
 import { Link } from "react-router";
@@ -14,8 +15,10 @@ function Outfits() {
   const line3Ref = useRef<HTMLSpanElement>(null)
   const linkRef = useRef<HTMLDivElement>(null)
   const copyRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   const [products, setProducts] = useState<Products[]>([]);
+  useCardHover();
 
   useEffect(() => {
     ; (async () => {
@@ -28,6 +31,50 @@ function Outfits() {
       }
     })()
   }, []);
+
+  useGSAP(() => {
+    if (!products.length) return;
+
+    const cards = gsap.utils.toArray<HTMLElement>(".card-anim");
+    const images = gsap.utils.toArray<HTMLImageElement>(
+      ".card-anim img:not(.clip-img)"
+    );
+
+    const tl = gsap.timeline();
+
+    tl.set(cards, {
+      y: "110%",
+      opacity: 0.8,
+    });
+
+    tl.set(images, {
+      clipPath: "inset(0 100% 0 0)",
+    });
+
+    tl.to(cards, {
+      y: 0,
+      opacity: 1,
+      duration: 1.4,
+      ease: "power3.out",
+      stagger: 0.2,
+    });
+
+    tl.to(
+      images,
+      {
+        clipPath: "inset(0 0% 0 0)",
+        duration: 1.4,
+        ease: "power2.inOut",
+        stagger: 0.15,
+      },
+      "-=2"
+    );
+  },
+    {
+      scope: cardsRef,
+      dependencies: [products],
+    }
+  );
 
   useGSAP(() => {
     const elements = [outRef, desRef, linkRef, copyRef]
@@ -79,15 +126,21 @@ function Outfits() {
         <div className="w-1/2 md:w-auto text-lg font-medium mt-8 md:mt-0 ml-auto md:ml-0 text-right" ref={copyRef}>&copy; 2026</div>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(14rem,100%),1fr))] gap-8 my-12">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(14rem,100%),1fr))] gap-8 my-12" ref={cardsRef}>
         {
           products.map((p) => (
-            <Link to="/">
-              <Card key={p.id} className="bg-text/20 rounded-none py-0 [--card-spacing:0px]">
-                <CardContent className="px-0 pb-0 mb-0 overflow-hidden">
-                  <img src={p.url} alt="image" className="w-full h-full object-cover" />
+            <Link to="/" key={p.id} className="card-anim">
+              <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px]">
+                <CardContent className="px-0 pb-0 mb-0 overflow-hidden relative">
+                  <img src={p.url} alt={p.title} className="w-full h-full object-cover" />
+                  <img
+                    src={p.url2}
+                    alt={p.title}
+                    className="w-full h-full object-cover absolute top-0 left-0 clip-img"
+                    style={{ clipPath: "inset(0 100% 0 0)" }}
+                  />
                 </CardContent>
-                <CardFooter className="bg-bg text-text flex justify-between items-start pt-6">
+                <CardFooter className="bg-bg text-text flex justify-between items-start pt-6 rounded-none">
                   <div>
                     <div className="text-3xl">{p.title}</div>
                     <div className="text-2xl">{p.category}</div>
