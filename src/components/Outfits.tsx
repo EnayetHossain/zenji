@@ -6,6 +6,7 @@ import { useCardHover } from "../hooks/useCardHover";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import type { Products } from "@/types/product";
 import { Link } from "react-router";
+import { AnimationDuration } from "@/lib/constants";
 
 function Outfits() {
   const outRef = useRef<HTMLDivElement>(null)
@@ -54,7 +55,7 @@ function Outfits() {
     tl.to(cards, {
       y: 0,
       opacity: 1,
-      duration: 1.4,
+      duration: AnimationDuration,
       ease: "power3.out",
       stagger: 0.2,
     });
@@ -63,7 +64,7 @@ function Outfits() {
       images,
       {
         clipPath: "inset(0 0% 0 0)",
-        duration: 1.4,
+        duration: AnimationDuration,
         ease: "power2.inOut",
         stagger: 0.15,
       },
@@ -85,7 +86,7 @@ function Outfits() {
     gsap.to(elements, {
       y: 0,
       opacity: 1,
-      duration: 1.4,
+      duration: AnimationDuration,
       ease: "power3.out",
       stagger: 0.2,
     });

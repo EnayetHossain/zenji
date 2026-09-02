@@ -1,4 +1,3 @@
-import type { Products } from "@/types/product";
 import { Link } from "react-router";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardFooter } from "./ui/card";
@@ -6,6 +5,7 @@ import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { AnimationDuration } from "@/lib/constants";
 
 function Products() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -22,7 +22,7 @@ function Products() {
       gsap.set(images, { clipPath: "inset(0 100% 0 0)" });
       gsap.to(images, {
         clipPath: "inset(0 0% 0 0)",
-        duration: 1.4,
+        duration: AnimationDuration,
         ease: "power4.inOut",
         scrollTrigger: {
           trigger: container,

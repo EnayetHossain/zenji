@@ -1,3 +1,4 @@
+import { AnimationDuration } from "@/lib/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
@@ -18,7 +19,7 @@ function HeroSection() {
     gsap.set(elements, { y: "110%" })
     gsap.to(elements, {
       y: 0,
-      duration: 1.4,
+      duration: AnimationDuration,
       ease: "power4.out",
       stagger: 0.2
     })
@@ -27,7 +28,7 @@ function HeroSection() {
       gsap.set(lineRef.current, { scaleX: 0, transformOrigin: 'left center' });
       gsap.to(lineRef.current, {
         scaleX: 1,
-        duration: 1.4,
+        duration: AnimationDuration,
         ease: 'power2.inOut',
         delay: 0.3,
       });

@@ -3,6 +3,8 @@ import { useGSAP } from "@gsap/react";
 import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { AnimatedLink } from "./AnimatedLink";
+import { AnimationDuration } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 function Navbar() {
   const links: Array<Record<string, string>> = [
@@ -25,7 +27,7 @@ function Navbar() {
     gsap.to(navbarRef.current, {
       y: 0,
       opacity: 1,
-      duration: 1.3,
+      duration: AnimationDuration,
       ease: "power4.out",
       delay: 0.5,
     });
@@ -64,13 +66,13 @@ function Navbar() {
             More <FaAngleDown className="ml-2 text-2xl" />
           </button>
           <div
-            className={
-              "absolute top-full right-0 mt-2 bg-bg border border-text/20 shadow-xl min-w-[16rem] overflow-hidden transition-all duration-300 ease-out z-50 " +
-              (open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none")
-            }
+            className={cn("absolute top-full right-0 mt-2 bg-text shadow-xl min-w-[16rem] overflow-hidden transition-all duration-300 ease-out z-50",
+              open
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 -translate-y-2 pointer-events-none")}
           >
             {lastThree.map((l) => (
-              <AnimatedLink key={l.label} to={l.link} className="block px-4 py-3 hover:bg-text/10 border-b border-text/10">
+              <AnimatedLink key={l.label} to={l.link} className="block py-3 hover:bg-bg/10 text-bg before:bg-bg">
                 {l.label}
               </AnimatedLink>
             ))}
