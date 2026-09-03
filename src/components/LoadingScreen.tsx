@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { useLoading } from "@/hooks/useLoading";
 import { cn } from "@/lib/utils";
@@ -89,7 +90,7 @@ function LoadingScreen() {
     };
   }, [isLoaded, finishLoading, triggerContentAnimation]);
 
-  if (!isLoading) {
+  if (!isLoading || typeof document === "undefined") {
     return null;
   }
 
@@ -100,7 +101,7 @@ function LoadingScreen() {
     return "INITIALIZATION COMPLETE";
   };
 
-  return (
+  const content = (
     <div
       ref={containerRef}
       role="progressbar"
@@ -108,16 +109,17 @@ function LoadingScreen() {
       aria-valuemin={0}
       aria-valuemax={100}
       className={cn(
-        "fixed inset-0 z-9999 flex flex-col justify-between bg-bg text-text p-8 md:p-14 select-none",
+        "fixed inset-0 z-[9999] flex flex-col justify-between bg-text text-bg p-8 md:p-14 select-none",
         isLoaded ? "pointer-events-none" : "pointer-events-auto"
       )}
       style={{
         clipPath: "inset(0% 0% 0% 0%)",
+        zIndex: 9999,
       }}
     >
-      <div className="flex justify-between items-center text-sm md:text-base font-semibold tracking-widest uppercase border-b border-text/20 pb-4">
+      <div className="flex justify-between items-center text-sm md:text-base font-semibold tracking-widest uppercase border-b border-bg/20 pb-4">
         <div className="flex items-center gap-3">
-          <span className="inline-block w-2.5 h-2.5 bg-text animate-pulse" />
+          <span className="inline-block w-2.5 h-2.5 bg-bg animate-pulse" />
           <span>ZENJI // ARCHIVE</span>
         </div>
         <div className="hidden sm:block text-accent-gray">FW26 COLLECTION</div>
@@ -127,7 +129,7 @@ function LoadingScreen() {
       <div className="flex flex-col items-center justify-center my-auto w-full max-w-5xl mx-auto text-center px-4">
         <div
           ref={percentTextRef}
-          className="font-black text-[clamp(5rem,18vw,16rem)] leading-none tracking-tighter tabular-nums text-text"
+          className="font-black text-[clamp(5rem,18vw,16rem)] leading-none tracking-tighter tabular-nums text-bg"
         >
           {progress}
           <span className="text-3xl md:text-6xl font-light text-accent-gray ml-2">
@@ -135,10 +137,10 @@ function LoadingScreen() {
           </span>
         </div>
 
-        <div className="w-full max-w-xl h-1 bg-text/20 mt-6 md:mt-10 overflow-hidden relative">
+        <div className="w-full max-w-xl h-1 bg-bg/20 mt-6 md:mt-10 overflow-hidden relative">
           <div
             ref={progressBarRef}
-            className="h-full bg-text transition-all duration-150 ease-out"
+            className="h-full bg-bg transition-all duration-150 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -148,15 +150,17 @@ function LoadingScreen() {
         </div>
       </div>
 
-      <div className="flex justify-between items-center text-xs md:text-sm tracking-wider uppercase border-t border-text/20 pt-4 text-accent-gray">
+      <div className="flex justify-between items-center text-xs md:text-sm tracking-wider uppercase border-t border-bg/20 pt-4 text-accent-gray">
         <div>
-          ASSETS: <span className="text-text font-semibold">{loadedCount}</span> / {totalCount}
+          ASSETS: <span className="text-bg font-semibold">{loadedCount}</span> / {totalCount}
         </div>
         <div className="hidden md:block">BOTTOM-UP REVEAL PROTOCOL</div>
-        <div className="text-right text-text font-semibold">&copy; 2026 ZENJI</div>
+        <div className="text-right text-bg font-semibold">&copy; 2026 ZENJI</div>
       </div>
     </div>
   );
+
+  return createPortal(content, document.body);
 }
 
 export default LoadingScreen;

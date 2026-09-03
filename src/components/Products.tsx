@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { AnimationDuration } from "@/lib/constants";
@@ -11,8 +10,6 @@ function Products() {
   const containerRef = useRef<HTMLDivElement>(null)
   const containerRef2 = useRef<HTMLDivElement>(null)
   const containerRef3 = useRef<HTMLDivElement>(null)
-
-  gsap.registerPlugin(ScrollTrigger)
 
   useGSAP(() => {
     const animateContainer = (ref: React.RefObject<HTMLDivElement | null>) => {
