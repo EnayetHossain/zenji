@@ -32,7 +32,7 @@ function Footer() {
           Wear the Arc. Anime-inspired streetwear for gamers and otaku. Every drop limited. No restocks. Ever.
         </p>
         <div className="mt-5 text-sm text-text/60 mb-2">Follow the lore</div>
-        <div>
+        <div className="flex flex-wrap">
           <Button size="lg" className="text-xl p-8 bg-text text-bg"> <FaTiktok /> TikTok</Button>
           <Button size="lg" className="text-xl p-8 bg-linear-to-tr from-accent-orange to-accent-pink"> <FaInstagram /> Instagram</Button>
           <Button size="lg" className="text-xl p-8 bg-accent-blue"> <FaFacebook /> Facebook</Button>

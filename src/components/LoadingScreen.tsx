@@ -109,12 +109,11 @@ function LoadingScreen() {
       aria-valuemin={0}
       aria-valuemax={100}
       className={cn(
-        "fixed inset-0 z-[9999] flex flex-col justify-between bg-text text-bg p-8 md:p-14 select-none",
+        "fixed inset-0 z-9999 flex flex-col justify-between bg-text text-bg p-8 md:p-14 select-none",
         isLoaded ? "pointer-events-none" : "pointer-events-auto"
       )}
       style={{
         clipPath: "inset(0% 0% 0% 0%)",
-        zIndex: 9999,
       }}
     >
       <div className="flex justify-between items-center text-sm md:text-base font-semibold tracking-widest uppercase border-b border-bg/20 pb-4">
