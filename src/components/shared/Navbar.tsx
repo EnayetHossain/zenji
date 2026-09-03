@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { AnimatedLink } from "./AnimatedLink";
 import { AnimationDuration } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { useLoading } from "@/hooks/useLoading";
 
 function Navbar() {
   const links: Array<Record<string, string>> = [
@@ -20,18 +21,22 @@ function Navbar() {
   const navbarRef = useRef<HTMLElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
+  const { canAnimate } = useLoading();
 
   useGSAP(() => {
     if (!navbarRef.current) return;
-    gsap.set(navbarRef.current, { y: "-100%", opacity: 0 });
+    if (!canAnimate) {
+      gsap.set(navbarRef.current, { y: "-100%", opacity: 0 });
+      return;
+    }
     gsap.to(navbarRef.current, {
       y: 0,
       opacity: 1,
       duration: AnimationDuration,
       ease: "power4.out",
-      delay: 0.5,
+      delay: 0.1,
     });
-  });
+  }, [canAnimate]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

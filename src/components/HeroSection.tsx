@@ -2,6 +2,7 @@ import { AnimationDuration } from "@/lib/constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import { useLoading } from "@/hooks/useLoading";
 
 function HeroSection() {
   const path0 = useRef<SVGPathElement>(null);
@@ -11,29 +12,37 @@ function HeroSection() {
   const path4 = useRef<SVGPathElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
 
+  const { canAnimate } = useLoading();
+
   useGSAP(() => {
     const elements = [path0, path4, path1, path3, path2]
       .map((r) => r.current)
       .filter(Boolean) as Array<HTMLDivElement | SVGPathElement>;
 
-    gsap.set(elements, { y: "110%" })
+    if (!canAnimate) {
+      gsap.set(elements, { y: "110%" });
+      if (lineRef.current) {
+        gsap.set(lineRef.current, { scaleX: 0, transformOrigin: "left center" });
+      }
+      return;
+    }
+
     gsap.to(elements, {
       y: 0,
       duration: AnimationDuration,
       ease: "power4.out",
-      stagger: 0.2
-    })
+      stagger: 0.2,
+    });
 
     if (lineRef.current) {
-      gsap.set(lineRef.current, { scaleX: 0, transformOrigin: 'left center' });
       gsap.to(lineRef.current, {
         scaleX: 1,
         duration: AnimationDuration,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
         delay: 0.3,
       });
     }
-  });
+  }, [canAnimate]);
 
   return (
     <header className="flex flex-col items-center">

@@ -7,104 +7,116 @@ import { Card, CardContent, CardFooter } from "./ui/card";
 import type { Products } from "@/types/product";
 import { Link } from "react-router";
 import { AnimationDuration } from "@/lib/constants";
+import { useLoading } from "@/hooks/useLoading";
 
 function Outfits() {
-  const outRef = useRef<HTMLDivElement>(null)
-  const desRef = useRef<HTMLDivElement>(null)
-  const line1Ref = useRef<HTMLSpanElement>(null)
-  const line2Ref = useRef<HTMLSpanElement>(null)
-  const line3Ref = useRef<HTMLSpanElement>(null)
-  const linkRef = useRef<HTMLDivElement>(null)
-  const copyRef = useRef<HTMLDivElement>(null)
+  const outRef = useRef<HTMLDivElement>(null);
+  const desRef = useRef<HTMLDivElement>(null);
+  const line1Ref = useRef<HTMLSpanElement>(null);
+  const line2Ref = useRef<HTMLSpanElement>(null);
+  const line3Ref = useRef<HTMLSpanElement>(null);
+  const linkRef = useRef<HTMLDivElement>(null);
+  const copyRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
+  const { canAnimate } = useLoading();
   const [products, setProducts] = useState<Products[]>([]);
   useCardHover();
 
   useEffect(() => {
-    ; (async () => {
+    (async () => {
       try {
         const res = await fetch("/data/products.json");
         const data: Array<Products> = await res.json();
-        setProducts(data)
+        setProducts(data);
       } catch (error) {
-        console.log("error: ", error)
+        console.log("error: ", error);
       }
-    })()
+    })();
   }, []);
 
-  useGSAP(() => {
-    if (!products.length) return;
+  useGSAP(
+    () => {
+      if (!products.length) return;
 
-    const cards = gsap.utils.toArray<HTMLElement>(".card-anim");
-    const images = gsap.utils.toArray<HTMLImageElement>(
-      ".card-anim img:not(.clip-img)"
-    );
+      const cards = gsap.utils.toArray<HTMLElement>(".card-anim");
+      const images = gsap.utils.toArray<HTMLImageElement>(
+        ".card-anim img:not(.clip-img)"
+      );
 
-    const tl = gsap.timeline();
+      if (!canAnimate) {
+        gsap.set(cards, {
+          y: "110%",
+          opacity: 0.8,
+        });
+        gsap.set(images, {
+          clipPath: "inset(0 100% 0 0)",
+        });
+        return;
+      }
 
-    tl.set(cards, {
-      y: "110%",
-      opacity: 0.8,
-    });
+      const tl = gsap.timeline();
 
-    tl.set(images, {
-      clipPath: "inset(0 100% 0 0)",
-    });
-
-    tl.to(cards, {
-      y: 0,
-      opacity: 1,
-      duration: AnimationDuration,
-      ease: "power3.out",
-      stagger: 0.2,
-    });
-
-    tl.to(
-      images,
-      {
-        clipPath: "inset(0 0% 0 0)",
+      tl.to(cards, {
+        y: 0,
+        opacity: 1,
         duration: AnimationDuration,
-        ease: "power2.inOut",
-        stagger: 0.15,
-      },
-      "-=2"
-    );
-  },
+        ease: "power3.out",
+        stagger: 0.2,
+      });
+
+      tl.to(
+        images,
+        {
+          clipPath: "inset(0 0% 0 0)",
+          duration: AnimationDuration,
+          ease: "power2.inOut",
+          stagger: 0.15,
+        },
+        "-=2"
+      );
+    },
     {
       scope: cardsRef,
-      dependencies: [products],
+      dependencies: [products, canAnimate],
     }
   );
 
-  useGSAP(() => {
-    const elements = [outRef, desRef, linkRef, copyRef]
-      .map((r) => r.current)
-      .filter(Boolean) as HTMLDivElement[];
+  useGSAP(
+    () => {
+      const elements = [outRef, desRef, linkRef, copyRef]
+        .map((r) => r.current)
+        .filter(Boolean) as HTMLDivElement[];
 
-    gsap.set(elements, { y: 40, opacity: 0 });
-    gsap.to(elements, {
-      y: 0,
-      opacity: 1,
-      duration: AnimationDuration,
-      ease: "power3.out",
-      stagger: 0.2,
-    });
+      const lines = [line1Ref, line2Ref, line3Ref]
+        .map((r) => r.current)
+        .filter(Boolean) as HTMLSpanElement[];
 
-    const lines = [line1Ref, line2Ref, line3Ref]
-      .map((r) => r.current)
-      .filter(Boolean) as HTMLSpanElement[];
+      if (!canAnimate) {
+        gsap.set(elements, { y: 40, opacity: 0 });
+        gsap.set(lines, { y: 20, opacity: 0 });
+        return;
+      }
 
-    gsap.set(lines, { y: 20, opacity: 0 });
-    gsap.to(lines, {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: "power3.out",
-      stagger: 0.15,
-      delay: 0.4,
-    });
-  });
+      gsap.to(elements, {
+        y: 0,
+        opacity: 1,
+        duration: AnimationDuration,
+        ease: "power3.out",
+        stagger: 0.2,
+      });
+
+      gsap.to(lines, {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.15,
+        delay: 0.4,
+      });
+    },
+    [canAnimate]
+  );
 
   return (
     <section className="mt-10">
