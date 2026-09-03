@@ -25,7 +25,7 @@ function Footer() {
   ]
 
   return (
-    <footer className="mx-auto max-w-[250rem] px-4 flex flex-col md:flex-row justify-between items-start mt-30 py-8 pl-10 md:pl-0 relative before:absolute before:-top-4 before:left-0 before:h-0.5 before:w-full before:bg-text">
+    <footer className="mx-auto max-w-[250rem] px-4 flex flex-col md:flex-row justify-between items-start mt-30 py-8 relative before:absolute before:-top-4 before:left-0 before:h-0.5 before:w-full before:bg-text">
       <div className="mb-15 md:mb-0">
         <div className="text-[5rem] font-black mb-5">++</div>
         <p className="text-xl text-text/70 max-w-130">
