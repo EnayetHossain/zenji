@@ -50,13 +50,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/pant-1.png"
                   alt="new image"
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/pant-1-background.png"
                   alt="new image"
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -92,13 +92,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-4.png"
                   alt="new image"
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-4-background.png"
                   alt="new image"
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -134,13 +134,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-5.png"
                   alt="new image"
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-5-background.png"
                   alt="new image"
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -172,7 +172,6 @@ function Products() {
             <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px] w-full">
               <CardContent
                 className={cn(
-                  // Base / mobile
                   "aspect-square",
                   "md:aspect-square",
                   "lg:aspect-square",
@@ -181,13 +180,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/pant-2.png"
                   alt={"Zenji Layer 6"}
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/pant-2-background.png"
                   alt={"Zenji Layer 6"}
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -231,13 +230,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-6.png"
                   alt={"Zenji Layer 7"}
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-6-background.png"
                   alt={"Zenji Layer 7"}
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -272,7 +271,6 @@ function Products() {
             <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px] w-full">
               <CardContent
                 className={cn(
-                  // Base / mobile
                   "aspect-square",
                   "md:aspect-square",
                   "lg:aspect-square",
@@ -281,13 +279,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-7.png"
                   alt={"Zenji Layer 8"}
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-7-background.png"
                   alt={"Zenji Layer 8"}
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -323,7 +321,6 @@ function Products() {
             <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px] w-full">
               <CardContent
                 className={cn(
-                  // Base / mobile
                   "aspect-square",
                   "md:aspect-square",
                   "lg:aspect-3.5/4",
@@ -332,13 +329,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-8.png"
                   alt={"Zenji Layer 6"}
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-8-background.png"
                   alt={"Zenji Layer 6"}
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -367,13 +364,11 @@ function Products() {
           </Link>
         </div>
 
-        {/* Card 2 */}
         <div className="md:col-span-1 lg:col-span-2 lg:col-start-9">
           <Link to="/" className="card-anim block min-w-0 w-full" >
             <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px] w-full">
               <CardContent
                 className={cn(
-                  // Base / mobile
                   "aspect-square",
                   "md:aspect-square",
                   "lg:aspect-square",
@@ -382,13 +377,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-9.png"
                   alt={"Zenji Layer 7"}
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-9-background.png"
                   alt={"Zenji Layer 7"}
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{
@@ -417,13 +412,11 @@ function Products() {
           </Link>
         </div>
 
-        {/* Card 3 */}
         <div className="md:col-span-1 lg:col-span-2 lg:col-start-11">
           <Link to="/" className="card-anim block min-w-0 w-full" >
             <Card className="bg-accent-gray/70 rounded-none py-0 [--card-spacing:0px] w-full">
               <CardContent
                 className={cn(
-                  // Base / mobile
                   "aspect-square",
                   "md:aspect-square",
                   "lg:aspect-2/3",
@@ -432,13 +425,13 @@ function Products() {
                 )}
               >
                 <img
-                  src="/images/third-img.jpg"
+                  src="/images/t-shirt-10.png"
                   alt={"Zenji Layer 8"}
                   className="w-full h-full object-cover"
                 />
 
                 <img
-                  src="/images/fourth-img.jpg"
+                  src="/images/t-shirt-10-background.png"
                   alt={"Zenji Layer 8"}
                   className="absolute inset-0 w-full h-full object-cover clip-img"
                   style={{

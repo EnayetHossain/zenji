@@ -4,103 +4,103 @@
     "title": "Zenji Layer 1",
     "category": "Outerwear",
     "price": "129.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-1.png",
+    "url2": "/images/t-shirt-1-background.png"
   },
   {
     "id": "2",
     "title": "Zenji Layer 2",
     "category": "Mid Layer",
     "price": "89.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-2.png",
+    "url2": "/images/t-shirt-2-background.png"
   },
   {
     "id": "3",
     "title": "Zenji Layer 3",
     "category": "Base",
     "price": "45.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/cap-1.png",
+    "url2": "/images/cap-1-background.png"
   },
   {
     "id": "4",
     "title": "Zenji Layer 4",
     "category": "Accessories",
     "price": "34.84",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-3.png",
+    "url2": "/images/t-shirt-3-background.png"
   },
   {
     "id": "5",
     "title": "Zenji Layer 5",
     "category": "Footwear",
     "price": "159.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/pant-1.png",
+    "url2": "/images/pant-1-background.png"
   },
   {
     "id": "6",
     "title": "Zenji Layer 6",
     "category": "Headwear",
     "price": "55.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-4.png",
+    "url2": "/images/t-shirt-4-backgorund.png"
   },
   {
     "id": "7",
     "title": "Zenji Layer 7",
     "category": "Bags",
     "price": "120.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-5.png",
+    "url2": "/images/t-shirt-5-background.png"
   },
   {
     "id": "8",
     "title": "Zenji Layer 8",
     "category": "Scarves",
     "price": "75.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/pant-2.png",
+    "url2": "/images/pant-2-background.png"
   },
   {
     "id": "9",
     "title": "Zenji Layer 9",
     "category": "Belts",
     "price": "42.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-6.png",
+    "url2": "/images/t-shirt-6-background.png"
   },
   {
     "id": "10",
     "title": "Zenji Layer 10",
     "category": "Watches",
     "price": "299.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-7.png",
+    "url2": "/images/t-shirt-7-background.png"
   },
   {
     "id": "11",
     "title": "Zenji Layer 11",
     "category": "Sunglasses",
     "price": "185.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-8.png",
+    "url2": "/images/t-shirt-8-background.png"
   },
   {
     "id": "12",
     "title": "Zenji Layer 12",
     "category": "Jewelry",
     "price": "68.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-9.png",
+    "url2": "/images/t-shirt-9-background.png"
   },
   {
     "id": "13",
     "title": "Zenji Layer 13",
     "category": "Gloves",
     "price": "95.00",
-    "url": "/images/first-img.png",
-    "url2": "/images/second-img.jpg"
+    "url": "/images/t-shirt-10.png",
+    "url2": "/images/t-shirt-10-background.png"
   }
 ]
